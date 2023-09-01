@@ -514,19 +514,15 @@ Techlabs Native는 OpenRTB-Native-Ads-Specification-Final-1.2 를 기본으로 �
 
 # 7. 쿠키교환 Cookie Matching - Cookie Sync
 
-매체 지면이 웹 사이트인 경우 매체는 Widerplanet 사용자 ID로 입찰요청을 해야합니다.
-
-단, adverting id (Google ADID, Applie IDFA) 를 필수로 가지고 있는 앱 메체인 경우 쿠키교환은 불필요합니다.
-
 쿠키교환과 입찰요청은 아래와 같은 flow 로 진행 됩니다.
 
 
-순서    | 내용                                                                                                  | 담당
-:-------|:----------------------------------------------------------------------------------------------------|:-------------------
- 1     | Techlabs는 쿠키교환을 위한 end-point 를 DSP에 으로 제공합니다 (https 필수)                                             | Techlabs
- 2     | 사용자가 광고주 사이트에 나타난 경우, 제공받은 end-point 로 "DSP 사용자 ID" 추가하여 GET 방식으로 요청합니다.<br/>(hidden image 테그 호출방식) | DSP
- 3     | Techlabs는 전달받은 "DSP 사용자 ID" 와 "Techlabs 사용자 ID" 를 Techlabs Database 에 저장합니다.                        | Techlabs
- 4     | Techlabs 사용자가 네트워크에 나타난 경우, Techlabs측 Database 에 저장된 "DSP 사용자 ID" 를 포함하여 Widerplanet 으로 입찰 요청합니다.   | Techlabs
+순서    | 내용                                                                                      | 담당
+:-------|:----------------------------------------------------------------------------------------|:-------------------
+ 1     | Techlabs는 쿠키교환을 위한 end-point 를 DSP에 으로 제공합니다 (https 필수)                                 | Techlabs
+ 2     | 사용자가 광고주 사이트에 나타난 경우, 제공받은 end-point 로 "DSP 사용자 ID" 추가하여 GET 방식으로 요청합니다.                | DSP
+ 3     | Techlabs는 전달받은 "DSP 사용자 ID" 와 "Techlabs 사용자 ID" 를 Techlabs Database 에 저장합니다.            | Techlabs
+ 4     | Techlabs 사용자가 네트워크에 나타난 경우, Techlabs측 Database 에 저장된 "DSP 사용자 ID" 를 포함하여 DSP로 입찰 요청합니다. | Techlabs
 
 ## 7.1 사용자 ID 교환 요청 방식
 
