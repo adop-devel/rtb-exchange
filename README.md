@@ -37,8 +37,9 @@ Techlabs RTB Exchange 연동 가이드
         * [6.1.1 Example - 디스플레이 광고 요청](#611-example---디스플레이-광고-요청)
         * [6.1.2 Example - Native 광고 요청](#612-example---Native-광고-요청)
         * [6.1.3 Example - Video 광고 요청](#613-example---Video-광고-요청)
-
-<br/><br/>
+* [7. 쿠키교환 Cookie Matching - Cookie Sync](#7-쿠키교환-cookie-matching---cookie-sync)
+  * [7.1 사용자 ID 교환 요청 방식](#71-사용자-ID-교환-요청-방식)
+    <br/><br/>
 
 # 1. Techlabs 소개
 
@@ -67,6 +68,7 @@ Techlabs RTB Exchange 연동 가이드
  03     | 가능 여부 판단 후 디바이스 및 사이즈 협의                     | Techlabs, DSP
  04     | 양사 RTB 스펙 확인 후 예시 요청문을 통한 Techlabs 내부 설정 진행  | Techlabs, DSP
  05     | 계약서 전달 및 날인                                  | Techlabs, DSP
+ 06     | DSP의 사용자 식별값과 Techlabs의 사용자 식별자 연동 | Techlabs, DSP 
  06     | Test 캠페인 설정 및 EndPoint 및 응답 전문 전달            | Techlabs, DSP
  07     | 응답 전문 검토 확인                                  | Techlabs
  08     | 테스트 연동 요청 시작                                 | Techlabs, DSP
@@ -509,4 +511,35 @@ Techlabs Native는 OpenRTB-Native-Ads-Specification-Final-1.2 를 기본으로 �
 ```
 
 <br/><br/>
- 
+
+# 7. 쿠키교환 Cookie Matching - Cookie Sync
+
+매체 지면이 웹 사이트인 경우 매체는 Widerplanet 사용자 ID로 입찰요청을 해야합니다.
+
+단, adverting id (Google ADID, Applie IDFA) 를 필수로 가지고 있는 앱 메체인 경우 쿠키교환은 불필요합니다.
+
+쿠키교환과 입찰요청은 아래와 같은 flow 로 진행 됩니다.
+
+
+순서    | 내용                                                                                                  | 담당
+:-------|:----------------------------------------------------------------------------------------------------|:-------------------
+ 1     | Techlabs는 쿠키교환을 위한 end-point 를 DSP에 으로 제공합니다 (https 필수)                                             | Techlabs
+ 2     | 사용자가 광고주 사이트에 나타난 경우, 제공받은 end-point 로 "DSP 사용자 ID" 추가하여 GET 방식으로 요청합니다.<br/>(hidden image 테그 호출방식) | DSP
+ 3     | Techlabs는 전달받은 "DSP 사용자 ID" 와 "Techlabs 사용자 ID" 를 Techlabs Database 에 저장합니다.                        | Techlabs
+ 4     | Techlabs 사용자가 네트워크에 나타난 경우, Techlabs측 Database 에 저장된 "DSP 사용자 ID" 를 포함하여 Widerplanet 으로 입찰 요청합니다.   | Techlabs
+
+## 7.1 사용자 ID 교환 요청 방식
+
+Techlabs는 DSP의 사용자 ID 값을 전달 받기위한 end-point 를 제공합니다.
+HTTPS 프로토콜을 사용하며, GET 방식으로 요청합니다.
+쿼리스트링에 필수값과 DSP별 옵션값을 추가해 end-point로 요청합니다.
+
+Techlabs 제공 end-point
+```
+https://cookie-sync-sample.adop.cc/cookie-sync?dsp_id=[DSP_ID]
+```
+
+DSP가 호출 호출시 완성된 url 예시
+```
+https://cookie-sync-sample.adop.cc/cookie-sync?dsp_id=temp123&dsp_user_id=[DSP 사용자 ID]
+```
