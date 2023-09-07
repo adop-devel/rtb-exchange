@@ -718,7 +718,11 @@ Techlabs Native는 OpenRTB-Native-Ads-Specification-Final-1.2 를 기본으로 �
          },
          "instl":0,
          "secure":1,
-         "bidfloorcur":"USD"
+         "bidfloorcur":"USD",
+         "ext": {
+           "allctvs": 1,
+           "rewarded": 1
+         }
       }
    ]
 }
