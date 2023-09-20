@@ -49,12 +49,9 @@ Techlabs RTB Exchange 연동 가이드
 * 본 문서에서는, Techlabs Network사 간의 OpenRTB 프로토콜을 통해 연동하는 방법을 안내합니다.
 * OpenRTB는 2010년 부터 IAB(Interactive Advertising Bureau)에서 제작되어 현재 까지 개발 진행 중입니다.
 * Techlabs ***IAB OpenRTB*** 을 기반으로 합니다.
-    * IAB OpenRTB API 2.5
-      https://iabtechlab.com/standards/openrtb/
-    * IAB OpenRTB Dynamic Native Ads API 1.2
-      https://iabtechlab.com/standards/openrtb-native/
-    * IAB Video Ad Serving Template(VAST) 3.0
-      https://iabtechlab.com/standards/vast/
+    * [IAB OpenRTB API 2.5](https://iabtechlab.com/wp-content/uploads/2016/07/OpenRTB-API-Specification-Version-2-5-FINAL.pdf)
+    * [IAB OpenRTB Dynamic Native Ads API 1.2](https://iabtechlab.com/wp-content/uploads/2016/07/OpenRTB-Native-Ads-Specification-Final-1.2.pdf)
+    * [IAB Video Ad Serving Template(VAST) 3.0](https://iabtechlab.com/wp-content/uploads/2016/04/VASTv3_0.pdf)
 * 단, 모든 스펙이 구현되어 있지는 않으며, 연동시 추가로 필요한 스펙은 양사간 협의하에 추가 구현됩니다.
 
 ## 1.2 Techlabs 연동 절차
